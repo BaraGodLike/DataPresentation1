@@ -1,4 +1,4 @@
-﻿using DataPresentation1.DoubleLinked;
+﻿using DataPresentation1.Cursors;
 
 namespace DataPresentation1;
 
@@ -39,12 +39,12 @@ public class Program
         list.Insert(list.End(), new Addressee("Артем Зайцев", "Саратов, ул. Московская 22"));
         list.Insert(list.End(), new Addressee("Влад Тужиков", "СПб, Альпийский 15к2")); // Повторение
     }
-
+    
     private static void DeleteDuplicates(MyList<Addressee> list)
     {
         MyList<Addressee>.Position p = list.First(); // получение первой позиции списка
         MyList<Addressee>.Position end = list.End(); // получение позиции после последнего
-
+    
         while (p != end) // пока спсиок не кончится
         {
             MyList<Addressee>.Position q = list.Next(p); // получаем следующую позицию за проверяемой
@@ -61,7 +61,7 @@ public class Program
                     q = list.Next(q); // если не удаляли дубликат все равно переходим к следующей
                 }
             }
-
+    
             p = list.Next(p); // ищем дубликаты для объекта на следующей позиции
         }
     }
