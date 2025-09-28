@@ -174,12 +174,8 @@ public class MyList<T> where T : IEquatable<T>
     // Возвращает позицию следующего элемента
     public Position Next(Position p)
     {
-        if (p.Pos == _start && !IsEmpty()) 
-            return new Position(Nodes[_start].Next);
-        int prev = GetPrevious(p.Pos);
-        if (prev == -1) throw new IncorrectPositionException("Данная позиция отсутствует в списке");
-        
-        return Nodes[Nodes[prev].Next].Next == -1 ? _end : new Position(Nodes[p.Pos].Next);
+        if (!CheckPosition(p.Pos)) throw new IncorrectPositionException("Данная позиция отсутствует в списке");
+        return Nodes[p.Pos].Next == -1 ? _end : new Position(Nodes[p.Pos].Next);
     }
 
     // Возвращает позицию предыдущего элемента
