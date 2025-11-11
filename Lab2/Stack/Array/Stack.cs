@@ -1,39 +1,45 @@
 ﻿namespace Lab2.Stack.Array;
 
+// Стек на основе массива
 public class Stack<T>
 {
-    private const int Size = 256; 
-    private readonly T[] _array = new T[Size];
-    private int _last = -1;
+    private const int Size = 256;        // Максимальный размер стека
+    private readonly T[] _array = new T[Size];  // Массив для хранения элементов
+    private int _last = -1;              // Указатель на вершину стека
 
+    // Добавление элемента на вершину стека
     public void Push(T x)
     {
-        _array[++_last] = x;
+        _array[++_last] = x;  // Увеличиваем указатель и сохраняем элемент
     }
 
+    // Извлечение элемента с вершины
     public T Pop()
     {
-        return _array[_last--];
+        return _array[_last--];  // Возвращаем элемент и уменьшаем указатель
     }
 
+    // Просмотр вершины без извлечения
     public T Top()
     {
         return _array[_last];
     }
     
+    // Проверка заполненности стека
     public bool Full()
     {
-        return _last == Size - 1;
+        return _last == Size - 1;  // Достигнут конец массива
     }
 
+    // Проверка пустоты стека
     public bool Empty()
     {
-        return _last < 0;
+        return _last < 0;  // Указатель ниже начала массива
     }
 
+    // Очистка стека
     public void MakeNull()
     {
-        _last = -1;
+        _last = -1;  // Сбрасываем указатель
     }
-    
 }
